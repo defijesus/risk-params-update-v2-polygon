@@ -1,14 +1,32 @@
 // SPDX-License-Identifier: AGPL-3.0-only
+
+/*
+   _      ΞΞΞΞ      _
+  /_;-.__ / _\  _.-;_\
+     `-._`'`_/'`.-'
+         `\   /`
+          |  /
+         /-.(
+         \_._\
+          \ \`;
+           > |/
+          / //
+          |//
+          \(\
+           ``
+     defijesus.eth
+*/
+
 pragma solidity ^0.8.15;
 
 import {AaveV2Polygon} from "aave-address-book/AaveV2Polygon.sol";
 
 /**
- * @title <TITLE>
- * @author Llama
- * @notice <DESCRIPTION>
- * Governance Forum Post:
- * Snapshot:
+ * @title Risk Parameter Updates for Aave v2 Polygon
+ * @author Llamaxyz & Chaos Labs (defijesus, Matthew Graham, Omer Arie Goldberg, Yonatan Haimowitz)
+ * @notice Update Polygon v2 Risk Parameters
+ * Governance Forum Post: https://governance.aave.com/t/arc-risk-parameter-recommendations-for-aave-v2-polygon-2022-11-25/10826
+ * Snapshot: N/A 
  */
 contract ProposalPayload {
 
@@ -21,6 +39,10 @@ contract ProposalPayload {
 
     /// @notice The AAVE governance executor calls this function to implement the proposal.
     function execute() external {
+        /// unfreezing a reserve when its not frozen is a noop  
+        /// freezing an already frozen reserve is a noop
+        /// disabling borrowing on a reserve when its already disabled is a noop
+        
         AaveV2Polygon.POOL_CONFIGURATOR.freezeReserve(BAL);
 
         AaveV2Polygon.POOL_CONFIGURATOR.unfreezeReserve(CRV);
