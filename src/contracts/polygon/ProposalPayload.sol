@@ -17,17 +17,23 @@ contract ProposalPayload {
     address public constant GHST = 0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7;
     address public constant LINK = 0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39;
     address public constant SUSHI = 0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a;
+    address public constant DPI = 0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369;
 
     /// @notice The AAVE governance executor calls this function to implement the proposal.
     function execute() external {
         AaveV2Polygon.POOL_CONFIGURATOR.freezeReserve(BAL);
 
+        AaveV2Polygon.POOL_CONFIGURATOR.unfreezeReserve(CRV);
         AaveV2Polygon.POOL_CONFIGURATOR.disableBorrowingOnReserve(CRV);
 
         AaveV2Polygon.POOL_CONFIGURATOR.freezeReserve(GHST);
 
+        AaveV2Polygon.POOL_CONFIGURATOR.unfreezeReserve(LINK);
         AaveV2Polygon.POOL_CONFIGURATOR.disableBorrowingOnReserve(LINK);
 
         AaveV2Polygon.POOL_CONFIGURATOR.freezeReserve(SUSHI);
+
+        AaveV2Polygon.POOL_CONFIGURATOR.unfreezeReserve(DPI);
+        AaveV2Polygon.POOL_CONFIGURATOR.disableBorrowingOnReserve(DPI);
     }
 }

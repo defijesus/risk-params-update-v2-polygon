@@ -92,9 +92,10 @@ contract PolygonPayloadE2ETest is ProtocolV3TestBase {
     assertTrue(balFrozen);
 
     /// CRV
-    (, , , , , , bool crvBorrowingEnabled, , , ) = AaveV2Polygon
+    (, , , , , , bool crvBorrowingEnabled, , , bool crvFrozen) = AaveV2Polygon
       .AAVE_PROTOCOL_DATA_PROVIDER
       .getReserveConfigurationData(proposalPayload.CRV());
+    assertFalse(crvFrozen);
     assertFalse(crvBorrowingEnabled);
 
     /// GHST
@@ -104,9 +105,10 @@ contract PolygonPayloadE2ETest is ProtocolV3TestBase {
     assertTrue(ghstFrozen);
 
     /// LINK
-    (, , , , , , bool linkBorrowingEnabled, , , ) = AaveV2Polygon
+    (, , , , , , bool linkBorrowingEnabled, , , bool linkFrozen) = AaveV2Polygon
       .AAVE_PROTOCOL_DATA_PROVIDER
       .getReserveConfigurationData(proposalPayload.LINK());
+    assertFalse(linkFrozen);
     assertFalse(linkBorrowingEnabled);
 
     /// SUSHI
@@ -114,5 +116,12 @@ contract PolygonPayloadE2ETest is ProtocolV3TestBase {
       .AAVE_PROTOCOL_DATA_PROVIDER
       .getReserveConfigurationData(proposalPayload.SUSHI());
     assertTrue(sushiFrozen);
+
+    /// DPI
+    (, , , , , , bool dpiBorrowingEnabled, , , bool dpiFrozen) = AaveV2Polygon
+      .AAVE_PROTOCOL_DATA_PROVIDER
+      .getReserveConfigurationData(proposalPayload.DPI());
+    assertFalse(dpiFrozen);
+    assertFalse(dpiBorrowingEnabled);
   }
 }
