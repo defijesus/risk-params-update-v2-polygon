@@ -33,8 +33,8 @@ contract PolygonPayloadE2ETest is ProtocolV3TestBase {
   address public constant DAI = 0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063;
 
   function setUp() public {
-    polygonFork = vm.createFork(vm.rpcUrl('polygon'), 31507646);
-    mainnetFork = vm.createFork(vm.rpcUrl('ethereum'), 15275388);
+    polygonFork = vm.createFork(vm.rpcUrl('polygon'));
+    mainnetFork = vm.createFork(vm.rpcUrl('ethereum'));
   }
 
   // utility to transform memory to calldata so array range access is available
@@ -49,8 +49,8 @@ contract PolygonPayloadE2ETest is ProtocolV3TestBase {
   function testProposalE2E() public {
     vm.selectFork(polygonFork);
 
-    // 1. deploy l2 payload
-    proposalPayload = new ProposalPayload();
+    // 1. use deployed l2 payload
+    proposalPayload = ProposalPayload(0xFACe5FAfB0b61F77a67D239b3d1c94f08536db62);
 
     // 2. create l1 proposal
     vm.selectFork(mainnetFork);

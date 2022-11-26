@@ -42,7 +42,7 @@ contract DeployPayload is Script {
   function run() external {
     vm.startBroadcast();
     DeployL1PolygonProposal._deployL1Proposal(
-      address(0),
+      0xFACe5FAfB0b61F77a67D239b3d1c94f08536db62,
       bytes32(0)
     );
     vm.stopBroadcast();
