@@ -2,12 +2,12 @@
 pragma solidity ^0.8.0;
 
 import {Script} from 'forge-std/Script.sol';
-import {FraxPayload} from '../src/contracts/polygon/FraxPayload.sol';
+import {ProposalPayload} from '../src/contracts/polygon/ProposalPayload.sol';
 
-contract DeployPolygonFrax is Script {
+contract DeployPolygonPayload is Script {
   function run() external {
     vm.startBroadcast();
-    new FraxPayload();
+    new ProposalPayload();
     vm.stopBroadcast();
   }
 }
