@@ -57,7 +57,7 @@ contract PolygonPayloadE2ETest is ProtocolV3TestBase {
     vm.startPrank(GovHelpers.AAVE_WHALE);
     uint256 proposalId = DeployL1PolygonProposal._deployL1Proposal(
       address(proposalPayload),
-      0xf6e50d5a3f824f5ab4ffa15fb79f4fa1871b8bf7af9e9b32c1aaaa9ea633006d
+      0xdff78c5c3bbca49817d979701bb606c9779f290360755dd451d8e78c2f4444d0
     );
     vm.stopPrank();
 

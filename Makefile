@@ -14,4 +14,4 @@ test   :; forge test -vvv
 deploy-payload :; forge script script/DeployPolygonPayload.s.sol:DeployPolygonPayload --rpc-url ${RPC_POLYGON} --broadcast --ledger --sender ${LEDGER_SENDER} --verify --etherscan-api-key ${ETHERSCAN_API_KEY} -vvvv
 
 # Deploy L1 proposal polygon
-deploy-l1-payload-proposal :; forge script script/DeployL1PolygonProposal.s.sol:DeployPayload --rpc-url ${RPC_URL} --broadcast --ledger --sender ${LEDGER_SENDER} -vvvv
+deploy-l1-payload-proposal :; forge script script/DeployL1PolygonProposal.s.sol:DeployPayload --rpc-url ${RPC_URL} --broadcast --private-key ${PRIVATE_KEY} -vvvv

@@ -43,7 +43,7 @@ contract DeployPayload is Script {
     vm.startBroadcast();
     DeployL1PolygonProposal._deployL1Proposal(
       0xFACe5FAfB0b61F77a67D239b3d1c94f08536db62,
-      bytes32(0)
+      0xdff78c5c3bbca49817d979701bb606c9779f290360755dd451d8e78c2f4444d0
     );
     vm.stopBroadcast();
   }
